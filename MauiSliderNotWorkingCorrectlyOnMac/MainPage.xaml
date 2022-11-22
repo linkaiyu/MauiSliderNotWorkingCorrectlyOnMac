@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiSliderNotWorkingCorrectlyOnMac.MainPage">
+
+    <ContentPage.Resources>
+        <Style x:Key="entryStyle" TargetType="Entry">
+            <Setter Property="HeightRequest" Value="30" />
+            <Setter Property="WidthRequest" Value="100" />
+        </Style>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout >
+
+        <HorizontalStackLayout WidthRequest="800"
+                           HeightRequest="50">
+            <Entry Text="{Binding Minimum,Source={x:Reference slider},Mode=TwoWay}"
+               Style="{StaticResource Key=entryStyle}"/>
+            <Entry Text="{Binding Value,Source={x:Reference slider}}"
+               Style="{StaticResource Key=entryStyle}"/>
+            <Entry Text="{Binding Maximum, Source={x:Reference slider},Mode=TwoWay}"
+               Style="{StaticResource Key=entryStyle}"/>
+
+            <Button Text="UpdateMinimum" HeightRequest="40" FontSize="14"
+                Clicked="OnUpdateSliderMinimum"/>
+            <Button Text="UpdateValue" HeightRequest="40"
+                Clicked="OnUpdateSliderValue"/>
+            <Button Text="UpdateMaximum" HeightRequest="40"
+                Clicked="OnUpdateSliderMaximum"/>
+        </HorizontalStackLayout>
+        
+        <HorizontalStackLayout WidthRequest="800" HeightRequest="25" BackgroundColor="Green">
+            <Slider x:Name="slider" WidthRequest="800" VerticalOptions="Center"
+                Maximum="100"
+                Minimum="0"
+                Value="50"
+                MinimumHeightRequest="4" />
+        </HorizontalStackLayout>
+
+</VerticalStackLayout>
+
+</ContentPage>
